@@ -15,7 +15,7 @@ const Home = ({match}) => {
             let response = await axiosApi.get(url);
             if (match.params.page) {
                 response.data = {
-                    0: response.data
+                 [match.params.page] : response.data
                 };
             }
             console.log(response.data);
@@ -26,7 +26,7 @@ const Home = ({match}) => {
             setPages(pagesBase);
         };
         fetchData().catch(console.error);
-    }, match.params.page);
+    }, [match.params.page]);
 
     console.log(pages);
     return (
