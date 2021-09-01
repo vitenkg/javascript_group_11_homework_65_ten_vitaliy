@@ -1,6 +1,7 @@
 import './App.css';
 import {BrowserRouter, Link, NavLink, Route, Switch} from "react-router-dom";
 import Home from "./Conteiner/Home/Home";
+import Admin from "./Conteiner/Admin/Admin";
 
 
 
@@ -22,7 +23,7 @@ function App() {
               <Switch>
                   <Route path="/" exact component={Home}/>
                   <Route path="/pages/:page" component={Home}/>
-                  <Route path="/admin" component={Home}/>
+                  <Route path="/admin" component={Admin}/>
                   <Route render={()=><h1>NotFound</h1>}/>
               </Switch>
           </BrowserRouter>
