@@ -3,7 +3,6 @@ import './Home.css';
 import axiosApi from "../../AxiosApi";
 
 const Home = ({match}) => {
-    console.log(match.params.page);
     const [pages, setPages] = useState([]);
 
     useEffect(()=>{
@@ -18,7 +17,6 @@ const Home = ({match}) => {
                  [match.params.page] : response.data
                 };
             }
-            console.log(response.data);
             const pagesBase = Object.keys(response.data).map(page => ({
                 ...response.data[page],
                 id: page
@@ -28,7 +26,6 @@ const Home = ({match}) => {
         fetchData().catch(console.error);
     }, [match.params.page]);
 
-    console.log(pages);
     return (
         <div className="DisplayQuotes">
             <h3>SomeThing</h3>
