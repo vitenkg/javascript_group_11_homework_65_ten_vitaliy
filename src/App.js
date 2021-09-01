@@ -1,24 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Link, NavLink, Route, Switch} from "react-router-dom";
+import Home from "./Conteiner/Home/Home";
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="Container">
+          <BrowserRouter>
+              <div className="Header">
+                  <p className="NaviHeader"><Link exact to="/" style={{textDecoration: 'none'}} >Static Page</Link></p>
+                  <ul>
+                      <li><NavLink exact className="Link" to="/">Home</NavLink></li>
+                      <li><NavLink className="Link" to="/pages/about">About</NavLink></li>
+                      <li><NavLink className="Link" to="/pages/contacts">Contacts</NavLink></li>
+                      <li><NavLink className="Link" to="/pages/divisions">Divisions</NavLink></li>
+                      <li><NavLink className="Link" to="/admin">Admin</NavLink></li>
+                  </ul>
+              </div>
+
+              <Switch>
+                  <Route path="/" exact component={Home}/>
+                  <Route path="/pages/:page" component={Home}/>
+                  <Route path="/admin" component={Home}/>
+                  <Route render={()=><h1>NotFound</h1>}/>
+              </Switch>
+          </BrowserRouter>
+      </div>
   );
 }
 
